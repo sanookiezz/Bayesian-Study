@@ -1,0 +1,285 @@
+# Travel study pack — Sun 2026-04-26 (bus to Aberdeen)
+
+> One file. Phone-friendly. No Claude needed. Read it from top to bottom or skip around.
+> **19 days to exam.**
+
+---
+
+## How to use this on the bus
+
+You won't be doing derivations on a moving bus — your handwriting will hate you. Today is **active recall day**. The point is to pull facts out of your head, not to write new ones in.
+
+Suggested rhythm for a ~3.5 hour journey:
+
+1. **First 15 min** — read the pocket cheat sheet end to end.
+2. **30 min** — Quiz 1 (conjugate pairs).
+3. **5 min stretch** — look out the window.
+4. **30 min** — Quiz 2 (notation matching).
+5. **30 min** — Quiz 3 (spot the error).
+6. **30 min** — Quiz 4 (diagnose the chain).
+7. **20 min** — Quiz 5 (one-line theory).
+8. **20 min** — the lightning game. Time yourself.
+9. **Whatever's left** — re-read the cheat sheet. Look at any quiz you got wrong. Don't peek at answers until you've tried.
+
+If you get motion sick, close the file and just think through the Section B template from memory. That alone is worth the trip.
+
+---
+
+## Pocket cheat sheet
+
+### The one rule
+
+`p(θ | y) ∝ p(y | θ) · p(θ)`
+
+posterior ∝ likelihood × prior. Marginal likelihood `p(y)` is just the normaliser. It cancels whenever you're computing a ratio (Metropolis, Bayes factor numerator/denominator pieces, posterior odds).
+
+### Section B template — memorise this skeleton
+
+Every Section B question is the same five sub-parts. Different likelihood, same skeleton.
+
+1. Joint likelihood for `n` iid observations: `p(y | θ) = ∏ p(yᵢ | θ)`. Simplify to a kernel in θ.
+2. MLE: take log, differentiate, solve.
+3. Posterior: prior × likelihood, match the kernel to a named distribution, read off posterior hyperparameters.
+4. Posterior mean as `w · (prior mean) + (1−w) · θ̂_MLE`. Solve for `w`.
+5. Limit `n → ∞`: posterior mean → MLE, prior washes out.
+
+### Conjugate pairs you must know cold
+
+Notation: `α₀, β₀` are prior hyperparameters; `αₙ, βₙ` posterior. `s = Σyᵢ` (sum of observations).
+
+| Likelihood | Conjugate prior | Posterior |
+|---|---|---|
+| Bernoulli/Binomial(θ) | Beta(α₀, β₀) | Beta(α₀ + s, β₀ + n − s) |
+| Exponential, mean μ | Inv-Gamma(α₀, β₀) | Inv-Gamma(α₀ + n, β₀ + s) |
+| Poisson(λ) | Gamma(α₀, β₀) | Gamma(α₀ + s, β₀ + n) |
+| Normal, known σ² | Normal(μ₀, τ₀²) on μ | Normal with precision-weighted mean |
+| Normal, known μ | Inv-Gamma(α₀, β₀) on σ² | Inv-Gamma(α₀ + n/2, β₀ + Σ(yᵢ − μ)²/2) |
+| Geometric(θ) | Beta(α₀, β₀) | Beta(α₀ + n, β₀ + s) |
+| Uniform(0, θ) | Pareto(θ_min, k) | Pareto(max(θ_min, max yᵢ), k + n) |
+
+Posterior means (the "weighted average" form):
+- Beta-Binomial: `E[θ | y] = (α₀ + s) / (α₀ + β₀ + n)`
+- Exponential + Inv-Gamma: `E[μ | y] = (β₀ + s) / (α₀ + n − 1)`
+- Poisson + Gamma: `E[λ | y] = (α₀ + s) / (β₀ + n)`
+
+### MCMC diagnostic glossary
+
+- **R̂ (Gelman-Rubin / PSRF)**: ratio of total variance to within-chain variance. R̂ → 1 as S → ∞. **R̂ > 1.01 ⇒ keep sampling.**
+- **Trace plot**: should look like a "fuzzy caterpillar" — flat band, no trend, chains overlap. Drift or a slow walk = not stationary.
+- **ACF**: should drop fast (near zero by lag 20–30). Slow decay ⇒ small step / high autocorrelation / low effective sample.
+- **ESS = S / τ**: where τ = 1 + 2·Σρₛ. Positive autocorr ⇒ τ > 1 ⇒ ESS < S.
+- **Acceptance rate**: target 60–90% for Metropolis. Too high = step too small. Too low = step too large.
+
+### BMA / model averaging — three formulas
+
+- Marginal likelihood across models: `p(y) = Σᵢ p(y | Mᵢ) · p(Mᵢ)`
+- Posterior model probability: `p(Mᵢ | y) = p(y | Mᵢ) · p(Mᵢ) / p(y)`
+- Posterior odds: `POᵢⱼ = [p(y | Mᵢ) / p(y | Mⱼ)] · [p(Mᵢ) / p(Mⱼ)] = BFᵢⱼ × prior odds`
+- BMA prediction: `p(X | y) = Σᵢ p(X | Mᵢ) · p(Mᵢ | y)`
+
+### The MAP trick (Section A bait)
+
+Maximising the log-posterior ⇔ minimising the negative log-posterior.
+
+- Normal likelihood + Laplace prior on β ⇒ MAP = LASSO. Laplace contributes `λ ‖β‖₁`.
+- Normal likelihood + Normal prior on β ⇒ MAP = Ridge. Normal contributes `λ ‖β‖₂²`.
+
+### Notation policy reminder
+
+- Subscript `0` = prior, subscript `n` = posterior (Normal model).
+- Overlines `β̄, B̄, ᾱ, δ̄` = posterior in regression conjugate setting.
+- Tildes `β̃, B̃, α̃, δ̃` = conditional posterior in Gibbs sampler.
+- `γⱼ ∈ {0,1}` = SSVS variable inclusion indicator.
+
+---
+
+## Quiz 1 — Conjugate pair flashcards
+
+Cover the prior column with your thumb. Try to name the conjugate prior before checking.
+
+1. Likelihood: Binomial(n, θ). Conjugate prior on θ?
+2. Likelihood: Exponential with mean μ. Conjugate prior on μ?
+3. Likelihood: Poisson(λ). Conjugate prior on λ?
+4. Likelihood: Normal(μ, σ²) with σ² known. Conjugate prior on μ?
+5. Likelihood: Normal(μ, σ²) with μ known. Conjugate prior on σ²?
+6. Likelihood: Geometric(θ). Conjugate prior on θ?
+7. Likelihood: Uniform(0, θ). Conjugate prior on θ?
+8. After seeing data y from Binomial, Beta(α₀, β₀) becomes which posterior?
+
+---
+
+## Quiz 2 — Notation matching
+
+Each of these symbols means something specific in our course. What is it?
+
+1. `μ₀`
+2. `μₙ`
+3. `β̄`
+4. `β̃`
+5. `γⱼ`
+6. `R̂`
+7. `S_eff`
+8. `BF₁,₂`
+9. `θ⁽ˢ⁾`
+10. `ỹ`
+
+---
+
+## Quiz 3 — Spot the error
+
+Each statement has one mistake. Find it.
+
+1. *"The Metropolis acceptance ratio depends on `p(y)`, the marginal likelihood, which is why it's hard to compute."*
+2. *"In the Beta-Binomial model, the posterior mean is `(α₀ + s) / (α₀ + β₀)`."*
+3. *"R̂ close to 1 guarantees the chain has converged."*
+4. *"The Laplace prior gives the Ridge penalty in MAP estimation."*
+5. *"In the conjugate Normal model, the posterior mean of μ is `(κ₀ μ₀ + ȳ) / (κ₀ + n)`."*
+6. *"As n → ∞, the posterior mean stays fixed at the prior mean because the prior is informative."*
+7. *"A trace plot that drifts upward over 4000 iterations means the proposal step size is too small."*
+
+---
+
+## Quiz 4 — Diagnose the chain
+
+Each is a verbal description of an MCMC chain. Name the failure mode (or say "healthy"). Possible answers: healthy, step too small, step too large, not converged, multimodal not crossed.
+
+1. Trace plot looks like a flat fuzzy band; ACF drops to zero by lag 15; R̂ = 1.001.
+2. Trace plot is a slow upward walk over 4000 iterations; ACF is still ~0.7 at lag 100.
+3. Trace plot is mostly flat but jumps wildly to a far value once every ~200 iterations and stays there briefly. Acceptance rate is 15%.
+4. Two chains start at θ = −5 and +5 and after 1000 iterations they're still on opposite sides of zero, neither has crossed.
+5. Trace plot bounces in a tight band; ACF drops to zero by lag 5; acceptance rate is 95%.
+
+---
+
+## Quiz 5 — One-line theory
+
+Answer in one sentence.
+
+1. Why does the marginal likelihood `p(y)` cancel out of the Metropolis acceptance ratio?
+2. Why does a Laplace prior produce a sparse MAP estimate but a Normal prior never does?
+3. What's the key assumption that makes "sequential = batch" updating work?
+4. Why is the MLE biased downward for σ² in a Normal model (compared to the unbiased estimator)?
+5. Under exchangeability, what does it mean to say "rats are exchangeable within a lab"?
+6. What does R̂ measure, in one sentence?
+7. What's the intuition for why a Bayesian posterior mean is a weighted average of prior mean and MLE?
+
+---
+
+## Lightning game — the conjugate sprint
+
+Time yourself. 10 prompts. Aim for under 60 seconds total. Speak the answer or write it on the back of a receipt.
+
+> 1. Bernoulli + Beta → ?
+> 2. Exponential + Inv-Gamma → ?
+> 3. Poisson + Gamma → ?
+> 4. Normal (σ² known) + Normal → ?
+> 5. Geometric + Beta → ?
+> 6. Posterior mean form (any conjugate): `w · ___ + (1−w) · ___`?
+> 7. Two diagnostic plots that catch a too-small Metropolis step?
+> 8. R̂ rule of thumb threshold?
+> 9. BMA prediction formula in one symbol-string?
+> 10. MAP with Laplace prior is which classical estimator?
+
+If you got 8+ in under a minute, you're solid. If 5–7, you're close — drill them again on the way back. Below 5, that's tomorrow's first block.
+
+---
+
+## ⛔ ANSWERS BELOW — don't scroll until you've tried each section ⛔
+
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+
+### Quiz 1 answers
+
+1. Beta(α₀, β₀)
+2. Inv-Gamma(α₀, β₀)
+3. Gamma(α₀, β₀)
+4. Normal(μ₀, τ₀²)
+5. Inv-Gamma(α₀, β₀)
+6. Beta(α₀, β₀)
+7. Pareto(θ_min, k)
+8. Beta(α₀ + s, β₀ + n − s)
+
+### Quiz 2 answers
+
+1. Prior mean of μ in the Normal model.
+2. Posterior mean of μ after seeing n observations.
+3. Posterior mean of β in the regression conjugate setting (overline = posterior).
+4. Conditional posterior mean of β inside a Gibbs sampler with independent priors (tilde = Gibbs conditional).
+5. SSVS indicator: 1 if variable Xⱼ is included in the regression, 0 otherwise.
+6. Potential Scale Reduction Factor (Gelman–Rubin); convergence diagnostic.
+7. Effective sample size = S / τ, where τ is the autocorrelation factor.
+8. Bayes factor of model 1 vs model 2 = `p(y | M₁) / p(y | M₂)`.
+9. The s-th draw of θ from an MCMC chain.
+10. New / unseen observation (used for posterior predictive distribution).
+
+### Quiz 3 answers
+
+1. Wrong. The MH acceptance ratio is `p(θ*|y) / p(θ⁽ˢ⁻¹⁾|y)` — `p(y)` cancels in the numerator and denominator.
+2. Wrong. Denominator should be `α₀ + β₀ + n`.
+3. Wrong. R̂ ≈ 1 is *necessary* but not *sufficient* — it can be ≈1 even with non-convergence (overdispersion not started, multimodality).
+4. Wrong. Laplace gives LASSO. Normal gives Ridge.
+5. Wrong. Should be `(κ₀ μ₀ + n ȳ) / (κ₀ + n)` — the data term is multiplied by `n`.
+6. Wrong. Posterior mean → MLE as n → ∞; the prior washes out, regardless of how informative it was.
+7. Wrong. Drift = not stationary / not converged, not "step too small" specifically.
+
+### Quiz 4 answers
+
+1. Healthy.
+2. Not converged (drift means non-stationary; the persistent ACF confirms slow mixing).
+3. Multimodal not crossed (or step too small to escape mode — the rare jumps suggest the chain has trouble moving between modes).
+4. Not converged (chains haven't mixed).
+5. Step too small (95% acceptance is too high; chain barely moves; ACF drops fast only because it never went anywhere).
+
+### Quiz 5 answers
+
+1. Because the acceptance ratio is a ratio of two posterior densities at different θ values, and `p(y)` is the same in both — so it cancels.
+2. The Laplace density has a sharp non-differentiable peak at zero, so the MAP can sit exactly at zero. The Normal is smooth at zero, so the MAP is shrunk toward zero but never reaches it.
+3. The likelihood factorises: `p(y⁽ⁿ⁺¹⁾ | θ) = p(y⁽ⁿ⁾ | θ) · p(yₙ₊₁ | θ)`, which requires iid observations.
+4. Because MLE divides by `n` and uses an estimated mean (which is itself fitted to minimise residuals); the unbiased estimator divides by `n − p − 1` (or `n − 1`).
+5. Their joint distribution is invariant to which rat in the lab gets which index — order doesn't matter, so they share a common θⱼ.
+6. The ratio of total (between + within) variance to within-chain variance; tends to 1 when chains have converged to the same target.
+7. Both prior and data carry information about θ; the posterior weights them by their respective precisions/sample sizes — more data ⇒ more weight on MLE.
+
+### Lightning game answers
+
+1. Beta posterior
+2. Inv-Gamma posterior
+3. Gamma posterior
+4. Normal posterior
+5. Beta posterior
+6. `w · prior mean + (1 − w) · MLE`
+7. Trace plot (slow drift / no exploration) + ACF (slow decay)
+8. R̂ > 1.01 ⇒ keep sampling
+9. `p(X | y) = Σᵢ p(X | Mᵢ) · p(Mᵢ | y)`
+10. LASSO
+
+---
+
+## When you get back tonight
+
+Open `progress.md`, add an entry:
+- date,
+- "travel day, light recall on bus",
+- self-rating per quiz (1–5),
+- which quiz you got most wrong → that's tomorrow's first block.
+
+Have a good trip. ☕
