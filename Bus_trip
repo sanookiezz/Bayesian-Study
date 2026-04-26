@@ -112,16 +112,16 @@ Cover the prior column with your thumb. Try to name the conjugate prior before c
 
 Each of these symbols means something specific in our course. What is it?
 
-1. `μ₀`
-2. `μₙ`
-3. `β̄`
-4. `β̃`
-5. `γⱼ`
-6. `R̂`
-7. `S_eff`
-8. `BF₁,₂`
-9. `θ⁽ˢ⁾`
-10. `ỹ`
+1. `μ₀` - Prior mean
+2. `μₙ` - Posterior mean
+3. `β̄` - Beta posterior in the regression conjugate setting
+4. `β̃` - Beta conditional posterior in Gibbs Sampler
+5. `γⱼ` - SSVS variable inclusion indicator
+6. `R̂` - Ratio of total variance to within chain-variance
+7. `S_eff` - Effective sample size
+8. `BF₁,₂` - Bayes Factor model 1 vs 2
+9. `θ⁽ˢ⁾` s-th drawn of  sampler at drawn s
+10. `ỹ` - New/Unseen Observation
 
 ---
 
