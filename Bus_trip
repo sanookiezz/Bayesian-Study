@@ -114,10 +114,10 @@ Each of these symbols means something specific in our course. What is it?
 
 1. `μ₀` - Prior mean
 2. `μₙ` - Posterior mean
-3. `β̄` - Beta posterior in the regression conjugate setting
-4. `β̃` - Beta conditional posterior in Gibbs Sampler
+3. `β̄` - Posterior mean of beta in the regression conjugate setting
+4. `β̃` - Conditional posterior mean of beta in Gibbs Sampler
 5. `γⱼ` - SSVS variable inclusion indicator
-6. `R̂` - Ratio of total variance to within chain-variance
+6. `R̂` - Potential scale reduction factor (Gelman-Rubin) in convergence diacnostic
 7. `S_eff` - Effective sample size
 8. `BF₁,₂` - Bayes Factor model 1 vs 2
 9. `θ⁽ˢ⁾` s-th drawn of θ in a MCMC chain
