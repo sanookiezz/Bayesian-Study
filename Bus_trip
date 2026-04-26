@@ -155,8 +155,8 @@ Each is a verbal description of an MCMC chain. Name the failure mode (or say "he
 
 Answer in one sentence.
 
-1. Why does the marginal likelihood `p(y)` cancel out of the Metropolis acceptance ratio?
-2. Why does a Laplace prior produce a sparse MAP estimate but a Normal prior never does?
+1. Why does the marginal likelihood `p(y)` cancel out of the Metropolis acceptance ratio? - It can cancle out because in the equation as a numerator.
+2. Why does a Laplace prior produce a sparse MAP estimate but a Normal prior never does? Because Laplace prior on Bata is MAP Lasso that is strong shrinkage to for sparse parameter but the Normal prior is not (Normal prior treat like Ridge)
 3. What's the key assumption that makes "sequential = batch" updating work?
 4. Why is the MLE biased downward for σ² in a Normal model (compared to the unbiased estimator)?
 5. Under exchangeability, what does it mean to say "rats are exchangeable within a lab"?
