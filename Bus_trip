@@ -100,7 +100,7 @@ Cover the prior column with your thumb. Try to name the conjugate prior before c
 1. Likelihood: Binomial(n, θ). Conjugate prior on θ? Beta(α₀, β₀)
 2. Likelihood: Exponential with mean μ. Conjugate prior on μ? Inv-Gamma(α₀, β₀)
 3. Likelihood: Poisson(λ). Conjugate prior on λ? Gamma(α₀, β₀)
-4. Likelihood: Normal(μ, σ²) with σ² known. Conjugate prior on μ?
+4. Likelihood: Normal(μ, σ²) with σ² known. Conjugate prior on μ? Normal(μ₀, τ₀²) on μ
 5. Likelihood: Normal(μ, σ²) with μ known. Conjugate prior on σ²?
 6. Likelihood: Geometric(θ). Conjugate prior on θ?
 7. Likelihood: Uniform(0, θ). Conjugate prior on θ?
