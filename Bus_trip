@@ -120,7 +120,7 @@ Each of these symbols means something specific in our course. What is it?
 6. `R̂` - Ratio of total variance to within chain-variance
 7. `S_eff` - Effective sample size
 8. `BF₁,₂` - Bayes Factor model 1 vs 2
-9. `θ⁽ˢ⁾` s-th drawn of  sampler at drawn s
+9. `θ⁽ˢ⁾` s-th drawn of θ in a MCMC chain
 10. `ỹ` - New/Unseen Observation
 
 ---
