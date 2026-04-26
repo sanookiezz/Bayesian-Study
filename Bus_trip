@@ -133,9 +133,9 @@ Each statement has one mistake. Find it.
 2. *"In the Beta-Binomial model, the posterior mean is `(α₀ + s) / (α₀ + β₀ + n)`."*
 3. *"R̂ close to 1 and S go to infinity not guarantees the chain has converged."*
 4. *"The Laplace prior gives the Lasso penalty in MAP estimation."*
-5. *"In the conjugate Normal model, the posterior mean of μ is `(κ₀ μ₀ + ȳ) / (κ₀ + n)`."*
+5. *"In the conjugate Normal model, the posterior mean of μ is `(κ₀ μ₀ + nȳ) / (κ₀ + n)`."
 6. *"As n → ∞, the posterior mean -> MLE and the prior will be wash out because the posterior rely on the data."*
-7. *"A trace plot that drifts upward over 4000 iterations means the proposal step size is too small and not stationary."*
+7. *"A trace plot that drifts upward over 4000 iterations means the proposal step size is too small and not stationary and not converge."*
 
 ---
 
