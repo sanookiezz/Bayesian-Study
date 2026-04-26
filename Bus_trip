@@ -98,7 +98,7 @@ Maximising the log-posterior ⇔ minimising the negative log-posterior.
 Cover the prior column with your thumb. Try to name the conjugate prior before checking.
 
 1. Likelihood: Binomial(n, θ). Conjugate prior on θ? Beta(α₀, β₀)
-2. Likelihood: Exponential with mean μ. Conjugate prior on μ?
+2. Likelihood: Exponential with mean μ. Conjugate prior on μ? Inv-Gamma(α₀, β₀)
 3. Likelihood: Poisson(λ). Conjugate prior on λ?
 4. Likelihood: Normal(μ, σ²) with σ² known. Conjugate prior on μ?
 5. Likelihood: Normal(μ, σ²) with μ known. Conjugate prior on σ²?
