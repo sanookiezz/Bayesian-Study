@@ -129,7 +129,7 @@ Each of these symbols means something specific in our course. What is it?
 
 Each statement has one mistake. Find it.
 
-1. *"The Metropolis acceptance ratio depends on `p(y)`, the marginal likelihood, which is why it's hard to compute."*
+1. *"The Metropolis acceptance ratio depends on The MH acceptance ratio is `p(θ*|y) / p(θ⁽ˢ⁻¹⁾|y)` — `p(y)` cancels in the numerator and denominator."*
 2. *"In the Beta-Binomial model, the posterior mean is `(α₀ + s) / (α₀ + β₀ + n)`."*
 3. *"R̂ close to 1 and S go to infinity guarantees the chain has converged."*
 4. *"The Laplace prior gives the Lasso penalty in MAP estimation."*
