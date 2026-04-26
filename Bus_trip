@@ -173,11 +173,11 @@ Time yourself. 10 prompts. Aim for under 60 seconds total. Speak the answer or w
 > 2. Exponential + Inv-Gamma → ? - Inv-Gamma posterior
 > 3. Poisson + Gamma → ? Gamma posterior
 > 4. Normal (σ² known) + Normal → ? - Normal with precision weight mean
-> 5. Geometric + Beta → ? Beta
-> 6. Posterior mean form (any conjugate): `w · _posterior mean_ + (1−w) · _prior mean_`?
-> 7. Two diagnostic plots that catch a too-small Metropolis step? trace plot and acceptance rate
+> 5. Geometric + Beta → ? Beta posterior
+> 6. Posterior mean form (any conjugate): `w · _prior mean_ + (1−w) · _MAP_`?
+> 7. Two diagnostic plots that catch a too-small Metropolis step? trace plot and ACF
 > 8. R̂ rule of thumb threshold? R -> 1 S->inf rule of thimb threshole is 1% R>1.01 keep sampling
-> 9. BMA prediction formula in one symbol-string? 
+> 9. BMA prediction formula in one symbol-string? p(X | y) = Σᵢ p(X | Mᵢ) · p(Mᵢ | y)
 > 10. MAP with Laplace prior is which classical estimator? Lasso
 
 If you got 8+ in under a minute, you're solid. If 5–7, you're close — drill them again on the way back. Below 5, that's tomorrow's first block.
