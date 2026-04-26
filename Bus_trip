@@ -130,12 +130,12 @@ Each of these symbols means something specific in our course. What is it?
 Each statement has one mistake. Find it.
 
 1. *"The Metropolis acceptance ratio depends on `p(y)`, the marginal likelihood, which is why it's hard to compute."*
-2. *"In the Beta-Binomial model, the posterior mean is `(α₀ + s) / (α₀ + β₀)`."*
-3. *"R̂ close to 1 guarantees the chain has converged."*
-4. *"The Laplace prior gives the Ridge penalty in MAP estimation."*
+2. *"In the Beta-Binomial model, the posterior mean is `(α₀ + s) / (α₀ + β₀ + n)`."*
+3. *"R̂ close to 1 and S go to infinity guarantees the chain has converged."*
+4. *"The Laplace prior gives the Lasso penalty in MAP estimation."*
 5. *"In the conjugate Normal model, the posterior mean of μ is `(κ₀ μ₀ + ȳ) / (κ₀ + n)`."*
-6. *"As n → ∞, the posterior mean stays fixed at the prior mean because the prior is informative."*
-7. *"A trace plot that drifts upward over 4000 iterations means the proposal step size is too small."*
+6. *"As n → ∞, the posterior mean -> MLE and the prior will be wash out because the posterior rely on the data."*
+7. *"A trace plot that drifts upward over 4000 iterations means the proposal step size is too small and not stationary."*
 
 ---
 
