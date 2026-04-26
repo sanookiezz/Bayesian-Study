@@ -143,11 +143,11 @@ Each statement has one mistake. Find it.
 
 Each is a verbal description of an MCMC chain. Name the failure mode (or say "healthy"). Possible answers: healthy, step too small, step too large, not converged, multimodal not crossed.
 
-1. Trace plot looks like a flat fuzzy band; ACF drops to zero by lag 15; R̂ = 1.001.
-2. Trace plot is a slow upward walk over 4000 iterations; ACF is still ~0.7 at lag 100.
-3. Trace plot is mostly flat but jumps wildly to a far value once every ~200 iterations and stays there briefly. Acceptance rate is 15%.
-4. Two chains start at θ = −5 and +5 and after 1000 iterations they're still on opposite sides of zero, neither has crossed.
-5. Trace plot bounces in a tight band; ACF drops to zero by lag 5; acceptance rate is 95%.
+1. Trace plot looks like a flat fuzzy band; ACF drops to zero by lag 15; R̂ = 1.001. - Healthy, model looks converge
+2. Trace plot is a slow upward walk over 4000 iterations; ACF is still ~0.7 at lag 100. - Unhealthy, model shows small decay, step too small, slow mixing, not converge, high autocorrelation
+3. Trace plot is mostly flat but jumps wildly to a far value once every ~200 iterations and stays there briefly. Acceptance rate is 15%. - Unhealthy, step too large, not converge, low acceptance rate
+4. Two chains start at θ = −5 and +5 and after 1000 iterations they're still on opposite sides of zero, neither has crossed. - Unhealthy, converge but
+5. Trace plot bounces in a tight band; ACF drops to zero by lag 5; acceptance rate is 95%. - Healthy, model looks converge and low autocorrelation
 
 ---
 
