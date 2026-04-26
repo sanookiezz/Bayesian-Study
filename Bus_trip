@@ -157,11 +157,11 @@ Answer in one sentence.
 
 1. Why does the marginal likelihood `p(y)` cancel out of the Metropolis acceptance ratio? - It can cancle out because in the equation as a numerator.
 2. Why does a Laplace prior produce a sparse MAP estimate but a Normal prior never does? Because Laplace prior on Bata is MAP Lasso that is strong shrinkage to for sparse parameter but the Normal prior is not (Normal prior treat like Ridge)
-3. What's the key assumption that makes "sequential = batch" updating work?
-4. Why is the MLE biased downward for σ² in a Normal model (compared to the unbiased estimator)?
-5. Under exchangeability, what does it mean to say "rats are exchangeable within a lab"?
-6. What does R̂ measure, in one sentence?
-7. What's the intuition for why a Bayesian posterior mean is a weighted average of prior mean and MLE?
+3. What's the key assumption that makes "sequential = batch" updating work? because likelihood require the factorise in the equation.
+4. Why is the MLE biased downward for σ² in a Normal model (compared to the unbiased estimator)? because every posterior means are divided by n that if it's large enough, the result will be more objective.
+5. Under exchangeability, what does it mean to say "rats are exchangeable within a lab"? because posterior is invariant. Order doesn't matter and they can share common theta.
+6. What does R̂ measure, in one sentence? the total variance within the chain variance.
+7. What's the intuition for why a Bayesian posterior mean is a weighted average of prior mean and MLE? Most data and prior carry on theta, more data -> more weight in MLE
 
 ---
 
@@ -169,16 +169,16 @@ Answer in one sentence.
 
 Time yourself. 10 prompts. Aim for under 60 seconds total. Speak the answer or write it on the back of a receipt.
 
-> 1. Bernoulli + Beta → ?
-> 2. Exponential + Inv-Gamma → ?
-> 3. Poisson + Gamma → ?
-> 4. Normal (σ² known) + Normal → ?
-> 5. Geometric + Beta → ?
-> 6. Posterior mean form (any conjugate): `w · ___ + (1−w) · ___`?
-> 7. Two diagnostic plots that catch a too-small Metropolis step?
-> 8. R̂ rule of thumb threshold?
-> 9. BMA prediction formula in one symbol-string?
-> 10. MAP with Laplace prior is which classical estimator?
+> 1. Bernoulli + Beta → ? - Beta posterior
+> 2. Exponential + Inv-Gamma → ? - Inv-Gamma posterior
+> 3. Poisson + Gamma → ? Gamma posterior
+> 4. Normal (σ² known) + Normal → ? - Normal with precision weight mean
+> 5. Geometric + Beta → ? Beta
+> 6. Posterior mean form (any conjugate): `w · _posterior mean_ + (1−w) · _prior mean_`?
+> 7. Two diagnostic plots that catch a too-small Metropolis step? trace plot and acceptance rate
+> 8. R̂ rule of thumb threshold? R -> 1 S->inf rule of thimb threshole is 1% R>1.01 keep sampling
+> 9. BMA prediction formula in one symbol-string? 
+> 10. MAP with Laplace prior is which classical estimator? Lasso
 
 If you got 8+ in under a minute, you're solid. If 5–7, you're close — drill them again on the way back. Below 5, that's tomorrow's first block.
 
