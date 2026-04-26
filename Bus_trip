@@ -104,7 +104,7 @@ Cover the prior column with your thumb. Try to name the conjugate prior before c
 5. Likelihood: Normal(μ, σ²) with μ known. Conjugate prior on σ²? Inv-Gamma(α₀, β₀) on σ²
 6. Likelihood: Geometric(θ). Conjugate prior on θ? Beta(α₀, β₀)
 7. Likelihood: Uniform(0, θ). Conjugate prior on θ? Pareto(θ_min, k) 
-8. After seeing data y from Binomial, Beta(α₀, β₀) becomes which posterior?
+8. After seeing data y from Binomial, Beta(α₀, β₀) becomes which posterior? Beta(α₀+s, β₀+n-s)
 
 ---
 
