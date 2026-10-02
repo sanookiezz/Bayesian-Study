@@ -175,6 +175,22 @@ watch.forEach((w, i) => {
 });
 s.addNotes("This is the link between the two pieces of work. The data map shows that conversion numbers travel from curriculum planning and Enquirer through UnitE and the SQL Server connector into Power BI. The amber boxes are the points where the numbers can change or be lost along the way. Whether the RA5 semantic model reads from the SQL Server connector still needs confirming with Kevin.");
 
+// ================= Student System high-level diagram (from Lucid) =================
+s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Data" });
+s.addText("Student System: the high-level map", { placeholder: "title" });
+s.addText("16 systems grouped into four zones, drawn from the Lucid working file", { placeholder: "body" });
+s.addImage({ path: path.join(__dirname, "Student_System_High_Level.png"), x: 0.6, y: 1.7, w: 6.86, h: 5.2, altText: "Student System high-level data architecture: four zones (Capture, Engage and support, Core record, Student-facing services) feeding a SQL Server data connector and Power BI" });
+s.addShape(pres.shapes.ROUNDED_RECTANGLE, { objectName: "map guide", x: 7.75, y: 1.7, w: 4.95, h: 5.2, rectRadius: 0.08, fill: { color: C.background2 }, line: { color: C.background2 } });
+s.addText([
+  { text: "How to read it", options: { bold: true, fontSize: 17, color: C.text2, breakLine: true } },
+  { text: "Data flows left to right: captured, worked on, held in UnitE, then served to students.", options: { bullet: true, breakLine: true } },
+  { text: "Purple boxes are the two core systems: Enquirer and UnitE.", options: { bullet: true, breakLine: true } },
+  { text: "Amber dashed lines are manual hand-offs, including applications going into UnitE and student updates coming back.", options: { bullet: true, breakLine: true } },
+  { text: "Enquirer, TripleS, Bursary, UnitE and iTrent feed Power BI through the SQL Server connector.", options: { bullet: true } },
+], { isTextBox: true, x: 8.0, y: 1.9, w: 4.5, h: 4.4, fontSize: 13.5, color: C.text1, paraSpaceAfter: 8, valign: "top", margin: 0 });
+s.addText("Full detail stays in the Lucid working file.", { isTextBox: true, x: 8.0, y: 6.3, w: 4.5, h: 0.5, fontSize: 10.5, italic: true, color: "6B6F80", valign: "bottom", margin: 0 });
+s.addNotes("Simplified from the Student System group in the Lucid working file (1 Oct 2026). Some links are left out for readability, for example UnitE to FVC Portal and iTrent to UnitE; they remain in the detailed map. Editable version: https://lucid.app/lucidchart/a267d6e5-4997-41db-a995-88c7c970fb20/edit");
+
 // ================= 5. Funnel =================
 s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Data" });
 s.addText("Where students drop out", { placeholder: "title" });
